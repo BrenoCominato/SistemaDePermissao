@@ -29,17 +29,17 @@ namespace SistemaDePermissao.Controllers
             MySqlConnection mySqlConnection = new MySqlConnection("Server=localhost;userid=root;password=1234;database=db_permissao");
             await mySqlConnection.OpenAsync();
 
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandText = $"SELECT descricao FROM links INNER JOIN usuario ON links.tipoDeUsuarioId = usuario.tipoDeUsuarioId";
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
-            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             var sistemaDePermissaoContext = _context.links.Include(l => l.tipoDeUsuario);
             //int myidTipo = idTipo;
             //IEnumerable<Int32> myint = Enumerable.Repeat(myidTipo,1);
             //return View(myint);
-            //Git
-            
-            return View(await sistemaDePermissaoContext.ToListAsync());
+            //return View(await sistemaDePermissaoContext.ToListAsync());
+
+            return View();
 
 
         }
