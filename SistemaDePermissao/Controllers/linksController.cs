@@ -37,6 +37,7 @@ namespace SistemaDePermissao.Controllers
             //int myidTipo = idTipo;
             //IEnumerable<Int32> myint = Enumerable.Repeat(myidTipo,1);
             //return View(myint);
+            //Git
             
             return View(await sistemaDePermissaoContext.ToListAsync());
 
