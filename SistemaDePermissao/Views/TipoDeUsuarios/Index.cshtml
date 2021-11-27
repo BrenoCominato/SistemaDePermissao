@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SistemaDePermissao.Models.TipoDeUsuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
+</head>
+
+<h1>Lista de Tipo de Usuário</h1>
+
+<p>
+    <a asp-action="Create">Criar novo Tipo de Usuário</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriçao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriçao)
+            </td>
+            <td>
+                <a icon class="far fa-edit" asp-action="Edit" asp-route-id="@item.Id"></a> |
+                <a icon class="fas fa-info-circle" asp-action="Details" asp-route-id="@item.Id"></a> |
+                <a icon class="far fa-trash-alt" asp-action="Delete" asp-route-id="@item.Id"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

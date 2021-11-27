@@ -1,0 +1,52 @@
+﻿@model SistemaDePermissao.Models.usuario
+
+@{
+    ViewData["Title"] = "usuarios";
+}
+
+<h1>Criar</h1>
+
+<h4>Usuário</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input required="required"  asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input required="required"  asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="senha" class="control-label"></label>
+                <input required="required"  type="password" asp-for="senha" class="form-control" />
+                <span asp-validation-for="senha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cargo" class="control-label"></label>
+                <input required="required" asp-for="cargo" class="form-control" />
+                <span asp-validation-for="cargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipoDeUsuarioId" class="control-label"></label>
+                <select asp-for="tipoDeUsuarioId" class="form-control" asp-items="ViewBag.tipoDeUsuarioId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--<div>
+   <a class="btn btn-secondary" asp-action="Index">Voltar para Lista de Usuários</a>
+</div>-->
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

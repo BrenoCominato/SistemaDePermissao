@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SistemaDePermissao.Models.links>
+
+@{
+    ViewData["Title"] = "links";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
+</head>
+<h1>Lista de Links</h1>
+
+<p>
+    <a asp-action="Create">Criar novo Link</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoDeUsuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoDeUsuario.Id)
+            </td>
+            <td>
+                <a icon class="far fa-edit" asp-action="Edit" asp-route-id="@item.LinksID"></a> |
+                <a icon class="fas fa-info-circle" asp-action="Details" asp-route-id="@item.LinksID"></a> |
+                <a icon class="far fa-trash-alt" asp-action="Delete" asp-route-id="@item.LinksID"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
