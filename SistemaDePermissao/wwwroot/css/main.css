@@ -233,14 +233,14 @@ iframe {
   font-size: 15px;
   color: #1b3815;
   line-height: 1.2;
-
   position: relative;
   display: block;
   width: 100%;
   height: 55px;
   background: #ebebeb;
   border-radius: 27px;
-  padding: 0 35px 0 35px;
+  padding: 0 37px 0 34px;
+  margin-top: 24px;
 }
 
 
@@ -309,6 +309,7 @@ iframe {
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
+	margin: 90px;
 }
 
 
@@ -381,10 +382,13 @@ iframe {
   }
 }
 
+.fas fa-arrow-left{
+	width:15px;
+}
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
 @media (max-width: 576px) {
-  .login100-form {
+	.login100-form {
     padding-left: 15px;
     padding-right: 15px;
   }

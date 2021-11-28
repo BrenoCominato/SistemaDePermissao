@@ -23,17 +23,19 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descriçao)
-            </td>
-            <td>
-                <a icon class="far fa-edit" asp-action="Edit" asp-route-id="@item.Id"></a> |
-                <a icon class="fas fa-info-circle" asp-action="Details" asp-route-id="@item.Id"></a> |
-                <a icon class="far fa-trash-alt" asp-action="Delete" asp-route-id="@item.Id"></a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriçao)
+                </td>
+                <td>
+                    <a icon class="far fa-edit" asp-action="Edit" asp-route-id="@item.Id"></a> |
+                    <a icon class="fas fa-info-circle" asp-action="Details" asp-route-id="@item.Id"></a> |
+                    <a icon class="far fa-trash-alt" asp-action="Delete" asp-route-id="@item.Id"></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<a class="btn btn-secondary" href="https://localhost:44362/home">Voltar para Home</a>

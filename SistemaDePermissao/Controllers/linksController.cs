@@ -24,23 +24,33 @@ namespace SistemaDePermissao.Controllers
         }
 
         // GET: links
-        public async Task<IActionResult> Index(int idtipo)
+        public async Task<IActionResult> Index()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("Server=localhost;userid=root;password=1234;database=db_permissao");
+            var sistemaDePermissaoContext = _context.links.Include(l => l.tipoDeUsuario);
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
+            /*MySqlConnection mySqlConnection = new MySqlConnection("Server=localhost;userid=root;password=1234;database=db_permissao");
             await mySqlConnection.OpenAsync();
 
             int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandText = $"SELECT descricao FROM links INNER JOIN usuario ON links.tipoDeUsuarioId = usuario.tipoDeUsuarioId";
-            MySqlDataReader reader = mySqlCommand.ExecuteReader();
-            var sistemaDePermissaoContext = _context.links.Include(l => l.tipoDeUsuario);
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();*/
+
+            var links = _context.links.Where(l => l.tipoDeUsuarioId == idTipo).ToListAsync();
+
+
+
+            /*if(idtipo == idtipo)
+            {
+                return View(links);
+            }*/
+
             //int myidTipo = idTipo;
             //IEnumerable<Int32> myint = Enumerable.Repeat(myidTipo,1);
             //return View(myint);
             //return View(await sistemaDePermissaoContext.ToListAsync());
 
-            return View();
-
+            return View( await links);
 
         }
         
