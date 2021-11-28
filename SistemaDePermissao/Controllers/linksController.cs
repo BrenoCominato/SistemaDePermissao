@@ -49,7 +49,7 @@ namespace SistemaDePermissao.Controllers
             //IEnumerable<Int32> myint = Enumerable.Repeat(myidTipo,1);
             //return View(myint);
             //return View(await sistemaDePermissaoContext.ToListAsync());
-
+        
             return View( await links);
 
         }

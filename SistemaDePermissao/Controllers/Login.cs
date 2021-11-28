@@ -28,7 +28,7 @@ namespace SistemaDePermissao.Controllers
             await mySqlConnection.OpenAsync();
 
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-            mySqlCommand.CommandText = $"SELECT tipoDeUsuarioId FROM usuario WHERE email = '{email}' AND senha = '{senha}'";
+            mySqlCommand.CommandText = $"SELECT tipoDeUsuarioId, cargo FROM usuario WHERE email = '{email}' AND senha = '{senha}'";
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
             /*----------------------------Instrução lambda-----------------------------------*/
@@ -44,8 +44,12 @@ namespace SistemaDePermissao.Controllers
             {
                 int tipoId = reader.GetInt32(0);
                 HttpContext.Session.SetInt32("tipoDeUsuarioId", tipoId);
+                //string cargo = reader.GetString(1);
+                //HttpContext.Session.SetString("cargo", cargo);
+                
                 return RedirectToAction("Index", "Home");
             }
+            mySqlConnection.Close();
             return Json(new { Msg = "Usuario nao encontrado!" });
         }
     }
