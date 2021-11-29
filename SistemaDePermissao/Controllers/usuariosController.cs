@@ -49,11 +49,12 @@ namespace SistemaDePermissao.Controllers
         // GET: usuarios/Create
         public IActionResult Create()
         {
-            ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao");
+            
             int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
 
             if(idTipo != 2)
             {
+                ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao");
                 return View();
             }
             else
@@ -83,6 +84,8 @@ namespace SistemaDePermissao.Controllers
         // GET: usuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             if (id == null)
             {
                 return NotFound();
@@ -93,8 +96,17 @@ namespace SistemaDePermissao.Controllers
             {
                 return NotFound();
             }
-            ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao", usuario.tipoDeUsuarioId);
-            return View(usuario);
+            if (idTipo != 2)
+            {
+                ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao", usuario.tipoDeUsuarioId);
+                return View(usuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+            
         }
 
         // POST: usuarios/Edit/5
@@ -136,6 +148,7 @@ namespace SistemaDePermissao.Controllers
         // GET: usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             if (id == null)
             {
                 return NotFound();
@@ -148,8 +161,14 @@ namespace SistemaDePermissao.Controllers
             {
                 return NotFound();
             }
-
-            return View(usuario);
+            if (idTipo != 2)
+            {
+                return View(usuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            } 
         }
 
         // POST: usuarios/Delete/5

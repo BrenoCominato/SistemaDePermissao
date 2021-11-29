@@ -76,8 +76,18 @@ namespace SistemaDePermissao.Controllers
         // GET: links/Create
         public IActionResult Create()
         {
-            ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao");
-            return View();
+            
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
+
+            if (idTipo != 2)
+            {
+                ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: links/Create
@@ -100,6 +110,7 @@ namespace SistemaDePermissao.Controllers
         // GET: links/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             if (id == null)
             {
                 return NotFound();
@@ -110,7 +121,16 @@ namespace SistemaDePermissao.Controllers
             {
                 return NotFound();
             }
-            ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao", links.tipoDeUsuarioId);
+            if (idTipo != 2)
+            {
+                ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao", links.tipoDeUsuarioId);
+                return View(links);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             return View(links);
         }
 
@@ -153,6 +173,7 @@ namespace SistemaDePermissao.Controllers
         // GET: links/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             if (id == null)
             {
                 return NotFound();
@@ -165,8 +186,15 @@ namespace SistemaDePermissao.Controllers
             {
                 return NotFound();
             }
-
-            return View(links);
+            if (idTipo != 2)
+            {
+                return View(links);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         // POST: links/Delete/5

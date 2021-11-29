@@ -15,29 +15,29 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />-->
 </head>
 <body>
-    @if (ViewBag.Title != "Login" && ViewBag.Title != "usuarios" && ViewBag.Title != "links" && ViewBag.Tilte != "TipoDeUsuarios")
+    @if (ViewBag.Title != "Login")
     {
-        <header class="header" class="navbar navbar-expand-xl navbar-light bg-light">
-            <a href="https://localhost:44362/Home" class="logo">
-                <img src="~/imagens/person3.png" class="u-logo-image u-logo-image-1">
-            </a>
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
-            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-            <ul class="menu">
-                <li>
-                    <a asp-controller="links" asp-action="Index">Links</a>
-                </li>
-                <li>
-                    <a asp-controller="usuarios" asp-action="Index">Usuário</a>
-                </li>
-                <li>
-                    <a asp-controller="TipoDeUsuarios" asp-action="Index">Tipo de Usuário</a>
-                </li>
-                <li class="logout">
-                    <a href="https://localhost:44362/Login"><img src="~/imagens/logout.png" />&nbsp; &nbsp;Logout</a>
-                </li>
-            </ul>
-        </header>
+    <header class="header" class="navbar navbar-expand-xl navbar-light bg-light">
+        <!--<a href="https://localhost:44362/Home" class="logo">
+        <img src="~/imagens/person3.png" class="u-logo-image u-logo-image-1">
+    </a>-->
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <li>
+                <a asp-controller="links" asp-action="Index">Links</a>
+            </li>
+            <li>
+                <a asp-controller="usuarios" asp-action="Index">Usuário</a>
+            </li>
+            <li>
+                <a asp-controller="TipoDeUsuarios" asp-action="Index">Tipo de Usuário</a>
+            </li>
+            <li class="logout">
+                <a href="https://localhost:44362/Login"><img src="~/imagens/logout.png" />&nbsp; &nbsp;Logout</a>
+            </li>
+        </ul>
+    </header>
         <!--<header>
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">

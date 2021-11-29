@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +47,18 @@ namespace SistemaDePermissao.Controllers
         // GET: TipoDeUsuarios/Create
         public IActionResult Create()
         {
-            return View();
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
+
+            if (idTipo != 2)
+            {
+                ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
         }
 
         // POST: TipoDeUsuarios/Create
@@ -68,6 +80,7 @@ namespace SistemaDePermissao.Controllers
         // GET: TipoDeUsuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             if (id == null)
             {
                 return NotFound();
@@ -78,7 +91,16 @@ namespace SistemaDePermissao.Controllers
             {
                 return NotFound();
             }
-            return View(tipoDeUsuario);
+            if (idTipo != 2)
+            {
+                ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao");
+                return View(tipoDeUsuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         // POST: TipoDeUsuarios/Edit/5
@@ -119,6 +141,7 @@ namespace SistemaDePermissao.Controllers
         // GET: TipoDeUsuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            int idTipo = (int)HttpContext.Session.GetInt32("tipoDeUsuarioId");
             if (id == null)
             {
                 return NotFound();
@@ -130,8 +153,14 @@ namespace SistemaDePermissao.Controllers
             {
                 return NotFound();
             }
-
-            return View(tipoDeUsuario);
+            if (idTipo != 2)
+            {
+                return View(tipoDeUsuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: TipoDeUsuarios/Delete/5
