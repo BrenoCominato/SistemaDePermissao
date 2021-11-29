@@ -1,0 +1,14 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background: #F4f4f4;
+}
+
+.message {
+  text-align: center;
+}
+.message h1 {
+  text-transform: uppercase;
+}

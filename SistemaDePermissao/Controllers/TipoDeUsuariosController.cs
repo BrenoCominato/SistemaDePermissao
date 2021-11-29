@@ -56,7 +56,7 @@ namespace SistemaDePermissao.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             }
 
         }
@@ -98,7 +98,7 @@ namespace SistemaDePermissao.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             }
             
         }
@@ -159,7 +159,7 @@ namespace SistemaDePermissao.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             }
         }
 

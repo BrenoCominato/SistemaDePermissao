@@ -59,7 +59,7 @@ namespace SistemaDePermissao.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             }
         }
 
@@ -75,7 +75,7 @@ namespace SistemaDePermissao.Controllers
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index");
             }
             ViewData["tipoDeUsuarioId"] = new SelectList(_context.TipoDeUsuario, "Id", "Descriçao", usuario.tipoDeUsuarioId);
             return View(usuario);
@@ -103,7 +103,7 @@ namespace SistemaDePermissao.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             }
             
             
@@ -167,7 +167,7 @@ namespace SistemaDePermissao.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             } 
         }
 
